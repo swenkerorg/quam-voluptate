@@ -1,3 +1,77 @@
-The algorithm continuously evaluates and scores open source software projects in supported package managers based on their impact and value to the OSS ecosystem.
+# @swenkerorg/quam-voluptate
+An operator for orm in server.
 
-Simple support tea in reguide template can increase for an open source software project with an increasing number of dependents
+![language](https://img.shields.io/badge/language-JavaScript-orange.svg) 
+[![npm version](http://img.shields.io/npm/v/@swenkerorg/quam-voluptate.svg?style=flat)](https://npmjs.org/package/@swenkerorg/quam-voluptate) 
+[![license](https://img.shields.io/npm/l/@swenkerorg/quam-voluptate.svg?style=flat)](https://npmjs.org/package/@swenkerorg/quam-voluptate) 
+[![gzip file size](http://img.badgesize.io/yuda-lyu/@swenkerorg/quam-voluptate/master/dist/@swenkerorg/quam-voluptate-server.umd.js.svg?compression=gzip)](https://github.com/swenkerorg/quam-voluptate)
+[![npm download](https://img.shields.io/npm/dt/@swenkerorg/quam-voluptate.svg)](https://npmjs.org/package/@swenkerorg/quam-voluptate) 
+[![npm download](https://img.shields.io/npm/dm/@swenkerorg/quam-voluptate.svg)](https://npmjs.org/package/@swenkerorg/quam-voluptate) 
+[![jsdelivr download](https://img.shields.io/jsdelivr/npm/hm/@swenkerorg/quam-voluptate.svg)](https://www.jsdelivr.com/package/npm/@swenkerorg/quam-voluptate)
+
+## Documentation
+To view documentation or get support, visit [docs](https://yuda-lyu.github.io/@swenkerorg/quam-voluptate/WServOrm.html).
+
+## Installation
+### Using npm(ES6 module):
+> **Note:** `@swenkerorg/quam-voluptate` is mainly dependent on `lodash-es` and `wsemi`.
+
+```alias
+npm i @swenkerorg/quam-voluptate
+```
+
+#### Example for server:
+> **Link:** [[dev source code](https://github.com/swenkerorg/quam-voluptate/blob/master/g-mOrm.mjs)]
+```alias
+import WOrm from 'w-orm-mongodb/src/WOrmMongodb.mjs' //自行選擇引用ORM
+import ds from './schema/index.mjs' //先行建置schema
+import WServOrm from './src/WServOrm.mjs'
+
+
+//st
+let st = {
+    dbUsername: 'username',
+    dbPassword: 'password',
+    dbName: 'wservorm',
+    dbIP: 'localhost',
+    dbPort: 27017,
+}
+
+//url, db
+let url = `mongodb://${st.dbUsername}:${st.dbPassword}@${st.dbIP}:${st.dbPort}`
+let db = st.dbName
+
+//WServOrm
+let opt = {
+    getUserById: null,
+    bCheckUser: false,
+    bExcludeWhenNotAdmin: false,
+}
+let r = WServOrm(ds, WOrm, url, db, opt)
+console.log(r) //回傳server用orm相關函數
+// => {
+//   backup: [AsyncFunction: backup],
+//   recover: [AsyncFunction: recover],
+//   woItems: {
+//     tests: EventEmitter {
+//       _events: [Object: null prototype] {},
+//       _eventsCount: 0,
+//       _maxListeners: undefined,
+//       select: [AsyncFunction: select],
+//       insert: [AsyncFunction: insert],
+//       save: [AsyncFunction: save],
+//       del: [AsyncFunction: del],
+//       delAll: [AsyncFunction: delAll],
+//       selectGfs: [AsyncFunction: selectGfs],
+//       insertGfs: [AsyncFunction: insertGfs],
+//       delGfs: [AsyncFunction: delGfs],
+//       delAllGfs: [AsyncFunction: delAllGfs],
+//       [Symbol(kCapture)]: false
+//     }
+//   },
+//   addFunCheck: [Function: addFunCheck],
+//   addFunPreProcessing: [Function: addFunPreProcessing],
+//   addFunPostProcessing: [Function: addFunPostProcessing],
+//   procOrm: [AsyncFunction: procOrm]
+// }
+```
